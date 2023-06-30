@@ -9,7 +9,7 @@ export default function Home() {
 
   //set the first message on load
   useEffect(() => {
-    setMessages([{ name: 'AI', message: getGreeting() }])
+    setMessages([{ name: 'Emma', message: getGreeting() }])
   }, [0])
 
   //scroll to the bottom of the chat for new messages
@@ -19,11 +19,11 @@ export default function Home() {
 
   function getGreeting() {
     const greetings = [
-      '안녕하세요! 코딩하는데 어떤 궁금증이 있으신가요? 제가 도움을 드릴 수 있어서 기쁩니다. 어떤 부분에 대해 물어보고 싶으신가요?',
-      '안녕하세요! 오늘은 코딩에 대한 궁금증이 있으신가요? 제가 알고 있는 선에서 도움을 드리도록 하겠습니다. 무엇을 알고 싶으신가요?',
-      '안녕하세요! 코딩에 관심이 있으신가요? 제가 알고 있는 한에서 도움을 드릴 수 있습니다. 무엇을 알고 싶으신가요?',
-      '안녕하세요! 코딩에 대해 어떤 것을 알고 싶으신가요? 제가 알고 있는 한에서 도움을 드리도록 하겠습니다.',
-      '안녕하세요! 코딩에 관련된 질문이 있으신가요? 제가 알고 있는 선에서 도움을 드릴 수 있습니다. 어떤 부분에 대해 궁금하신가요?',
+      "Hey there! How's it going?",
+      "Hiya! What's new with you?",
+      "Hello! Long time no see.",
+      "Hey! How have you been?",
+      "Hi! What's up?",
     ]
     const index = Math.floor(greetings.length * Math.random())
     return greetings[index]
@@ -38,8 +38,8 @@ export default function Home() {
     setMessages((prevMessages) => {
       const newMessages = [
         ...prevMessages,
-        { name: '나', message: chatInput },
-        { name: 'AI', message: '' },
+        { name: 'user', message: chatInput },
+        { name: 'Emma', message: '' },
       ]
       return newMessages
     })
@@ -53,7 +53,7 @@ export default function Home() {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        chat: [...messages, { name: 'Me', message: sentInput }],
+        chat: [...messages, { name: 'Emma', message: sentInput }],
       }),
     })
 
@@ -90,19 +90,23 @@ export default function Home() {
   }
 
   const messageElements = messages.map((m, i) => {
-    return (
-      <div
-        style={{
-          background: m.name === 'AI' ? 'none' : 'rgb(0 156 23 / 20%)',
-        }}
-        key={i}
-        className={styles.message}
-      >
-        <div className={styles.messageName}>{m.name}</div>
-        <div className={styles.messageContent}> {m.message}</div>
-      </div>
-    )
+    if (m.name === 'Emma') {
+      return (
+        <div key={i} className={styles.messageAI}>
+          <div className={styles.messageNameAI}>{m.name}</div>
+          <div className={styles.messageContentAI}> {m.message}</div>
+        </div>
+      )
+    } else {
+      return (
+        <div key={i} className={styles.messageUser}>
+          <div className={styles.messageContentUser}> {m.message}</div>
+        </div>
+      )
+    }
   })
+  
+  
 
   return (
     <div>
@@ -117,7 +121,7 @@ export default function Home() {
         }
       `}</style>
       <Head>
-        <title>AI재현의 코딩챗봇</title>
+        <title>자신감 뿜뿜. 틀려도 걱정없는 영어 챗봇!</title>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link
@@ -134,11 +138,11 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <div className={styles.icon}></div>
-
-        <h3>AI재현의 코딩 챗봇</h3>
-        <div className={styles.chat}>
-          <div className={styles.chatDisplay}>
+        <div className={styles.header}>
+          <div className={styles.icon}></div>
+          <h3>Emma와 영어로 대화해요.</h3></div>
+          <div className={styles.chat}>
+            <div className={styles.chatDisplay}>
             {messageElements}
 
             <div ref={bottomRef} />
@@ -147,17 +151,14 @@ export default function Home() {
             <input
               type="text"
               name="chat"
-              placeholder="여기에 질문하세요~"
+              placeholder="Emma에게 말을 걸어보세요."
               value={chatInput}
               onChange={(e) => {
                 setChatInput(e.target.value)
               }}
             />
-            <input type="submit" value="질문하기" />
+            <input type="submit" value="보내기" />
           </form>
-        </div>
-        <div className={styles.footer}>
-          made by <a href="https://developer-here.com">AI재현</a>
         </div>
       </main>
     </div>
