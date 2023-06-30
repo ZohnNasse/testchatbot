@@ -1,22 +1,13 @@
 .main {
-  display: flex;
-  flex-direction: column; /* Change this back to column */
-  align-items: center;
-  justify-content: center; /* This will vertically center the items */
-  height: 100%;
-  background: #eafff1;
-  color: #ffffff;
   font-family: 'Comic Mono', sans-serif;
+  background: #acebbf;
+  color: #ffffff;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
-
-  .main .header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-  }
-  
-
 
 .main,
 .main input {
@@ -26,19 +17,21 @@
   font-family: 'Comic Mono', sans-serif;
 }
 
-
 .main .icon {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
   background-image: url('/images/girl.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
+  margin-top: 10px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
   box-sizing: border-box;
 }
 
 .main h3 {
+  display: flex;
+  align-items: center;
   font-family: 'Gothic', sans-serif;
   font-weight: 700;
   font-size: 40px;
@@ -57,9 +50,7 @@
   margin-bottom: 12px;
   background: #242424;
   color: #ffffff;
-  width: calc(
-    100% - 120px
-  ); /* Reduce width to make room for the submit button */
+  width: calc(100% - 120px);
 }
 
 .main ::placeholder {
@@ -75,76 +66,57 @@
   border-radius: 1px;
   text-align: center;
   cursor: pointer;
-  width: 100px; /* Set a specific width for the submit button */
-  height: 48px; /* Set a specific height for the submit button, matching the input field */
+  width: 100px;
+  height: 48px;
   margin-left: 10px;
-  box-sizing: border-box; /* This ensures that padding and border are included in the element's total width and height */
-}
-
-.main .result {
-  font-weight: bold;
-  margin-top: 40px;
+  box-sizing: border-box;
 }
 
 .main .chat {
   max-width: 600px;
-  height: 80%; /* Increase this value to make the chat box taller */
+  width: 100%; /* Add this line to make the chat box responsive */
 }
 
 .main .chatDisplay {
-  background: #e7d8d8;
+  background: #242424;
   font-size: 18px;
   text-align: left;
-  height: 500px;
-  width : 600px;
-  border-radius: 6px;
+  height: 400px;
+  border-radius: 4px;
   border: 2px solid #42d0ff;
   margin-bottom: 12px;
   padding: 12px 0px;
   overflow-y: auto;
 }
-.messageAI {
+
+.message {
   display: flex;
-  justify-content: flex-start;
-  align-items: center; /* Add this line */
-  margin: 10px 0px; /* Add this line to create space between messages */
+  margin: 4px 0px;
 }
 
-.messageUser {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center; /* Add this line */
-  margin: 10px 0px; /* Add this line to create space between messages */
-}
-
-.messageNameAI {
+.messageName {
   display: inline;
   font-weight: bold;
   padding-left: 10px;
-  color: #88590d;
-  margin-right: 10px; /* Add this line to create space between the name and the message bubble */
+  color: #42d0ff;
 }
 
-.messageContentUser {
+.messageContent {
   display: inline;
   margin-left: 10px;
-  color: #000000;
-  background: #ffffff;
-  border-radius: 10px;
-  padding: 5px 10px;
-  max-width: 80%;
-  overflow-wrap: break-word;
-  font-size: 16px; /* Adjust the font size as needed */
+  color: #ffffff;
 }
 
-.messageContentAI {
-  display: inline;
-  margin-left: 10px;
-  color: #000000;
-  background: #bdd7fe;
-  border-radius: 10px;
-  padding: 5px 10px;
-  max-width: 80%;
-  overflow-wrap: break-word;
-  font-size: 16px; /* Adjust the font size as needed */
+.footer,
+.footer a,
+.footer a:visited {
+  padding-top: 10px;
+  color: #42d0ff;
+}
+
+/* Add the following media query for mobile devices */
+@media (max-width: 600px) {
+  .main .chat {
+    max-width: 100%;
+  }
 }
