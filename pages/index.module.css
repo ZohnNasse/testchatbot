@@ -148,3 +148,58 @@
   overflow-wrap: break-word;
   font-size: 16px; /* Adjust the font size as needed */
 }
+
+@media only screen and (max-width: 600px) {
+  .main .chatDisplay {
+    height: 300px;
+    width: 90%; /* Adjust the width of the chat box */
+    margin-left: auto; /* Add this line */
+    margin-right: auto; /* Add this line */
+  }
+
+  .main .icon {
+    width: 50px;
+    height: 50px;
+  }
+
+  .main h3 {
+    font-size: 20px;
+  }
+
+  .messageContentUser,
+  .messageContentAI {
+    font-size: 14px; /* Reduce the font size of the messages */
+  }
+
+  .main form {
+    width: 90%; /* Adjust the width of the form */
+    margin-left: auto; /* Add this line */
+    margin-right: auto; /* Add this line */
+  }
+
+  .main input[type='text'] {
+    width: calc(100% - 30px); /* Adjust the width of the input field */
+    height: 30px; /* Reduce the height of the text input */
+    font-size: 12px; /* Reduce the font size of the text input */
+    padding: 5px 10px; /* Adjust the padding of the text input */
+    border: 2px solid #42d0ff; /* Adjust the border of the text input */
+    box-sizing: border-box; /* Add this line */
+  }
+
+  .main input[type='submit'] {
+    background-image: url('../public/images/send.png'); /* Set the background image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-position: center; /* Position the image in the center of the button */
+    background-size: contain; /* Make sure the image fits within the button */
+    border: none; /* Remove the border */
+    color: transparent; /* Make the text transparent */
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;
+    box-sizing: border-box;
+  }
+  
+  
+}
+
